@@ -6,6 +6,6 @@ const Container = styled.div`
   width: 40%;
 `;
 
-export default function Game() {
-  return <Container>Game Container</Container>;
+export default function Question() {
+  return <Container>Question</Container>;
 }
