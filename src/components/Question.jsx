@@ -12,7 +12,7 @@ export default function Question(props) {
   return (
     <Container>
       {question}
-      <Options data={options}></Options>
+      <Options onClick={props.onClick} data={options}></Options>
     </Container>
   );
 }

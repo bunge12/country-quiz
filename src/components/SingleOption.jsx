@@ -9,5 +9,10 @@ const SingleAnswer = styled.button`
 `;
 
 export default function SingleOption(props) {
-  return <SingleAnswer>{props.name}</SingleAnswer>;
+  const select = (event) => props.onClick(event.target.value);
+  return (
+    <SingleAnswer onClick={select} value={props.name}>
+      {props.name}
+    </SingleAnswer>
+  );
 }

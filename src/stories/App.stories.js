@@ -20,6 +20,12 @@ const oneQuestion = {
 
 storiesOf("App", module)
   .add("Game Container", () => <Game />)
-  .add("Question", () => <Question data={oneQuestion} />)
-  .add("Options", () => <Options data={oneQuestion.options} />)
-  .add("Single Option", () => <SingleOption name="Kenya" />);
+  .add("Question", () => (
+    <Question onClick={action("Selected")} data={oneQuestion} />
+  ))
+  .add("Options", () => (
+    <Options onClick={action("Selected")} data={oneQuestion.options} />
+  ))
+  .add("Single Option", () => (
+    <SingleOption onClick={action("Selected")} name="Kenya" />
+  ));
