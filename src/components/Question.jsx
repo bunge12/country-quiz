@@ -9,6 +9,10 @@ const Container = styled.div`
   width: 40%;
   margin: 0px auto;
 `;
+const Flag = styled.img`
+  width: 100px;
+  padding: 15px;
+`;
 
 export default function Question(props) {
   const { question, options, winner } = props.data;
@@ -23,8 +27,17 @@ export default function Question(props) {
   };
   return (
     <Container>
-      {question}
-      <Options onClick={checkWinner} data={options}></Options>
+      {question.includes("&") ? (
+        <>
+          <Flag src={question.split("&", 1)}></Flag>
+          <figcaption>{question.split("&")[1]}</figcaption>
+        </>
+      ) : question.includes("↵") ? (
+        question.split("↵", 2)
+      ) : (
+        question
+      )}
+      <Options onClick={checkWinner} data={options} winner={winner}></Options>
       {answered ? <Next text="Next" onClick={props.next}></Next> : <></>}
     </Container>
   );

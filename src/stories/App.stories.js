@@ -19,10 +19,25 @@ const oneQuestion = {
   winner: "Trinidad and Tobago",
 };
 
+const flagQuestion = {
+  question:
+    "https://restcountries.eu/data/cok.svg&Which country does this flag belong to?",
+  options: [
+    "Kenya",
+    "Tuvalu",
+    "Falkland Islands (Malvinas)",
+    "Trinidad and Tobago",
+  ],
+  winner: "Trinidad and Tobago",
+};
+
 storiesOf("App", module)
   .add("Finished Container", () => <Finished result="3" />)
-  .add("Question", () => (
+  .add("Capital Question", () => (
     <Question onClick={action("Selected")} data={oneQuestion} />
+  ))
+  .add("Picture Question", () => (
+    <Question onClick={action("Selected")} data={flagQuestion} />
   ))
   .add("Options", () => (
     <Options onClick={action("Selected")} data={oneQuestion.options} />
