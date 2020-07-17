@@ -53,7 +53,11 @@ function App() {
     <div className="App">
       <h1>country quiz</h1>
       {started ? (
-        <Question data={questions[number]} onClick={increaseScore}></Question>
+        <Question
+          data={questions[number]}
+          onClick={increaseScore}
+          next={nextQuestion}
+        ></Question>
       ) : (
         <StartAgain onClick={startGame} text="Start Game"></StartAgain>
       )}

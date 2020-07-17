@@ -24,7 +24,7 @@ export default function Question(props) {
     <Container>
       {question}
       <Options onClick={checkWinner} data={options}></Options>
-      {answered ? <Next text="Next"></Next> : <></>}
+      {answered ? <Next text="Next" onClick={props.next}></Next> : <></>}
     </Container>
   );
 }
