@@ -6,6 +6,7 @@ import Game from "../components/Game";
 import Question from "../components/Question";
 import Options from "../components/Options";
 import SingleOption from "../components/SingleOption";
+import StartAgain from "../components/StartAgain";
 
 const oneQuestion = {
   question: "Port of Spain is the capital of",
@@ -28,4 +29,10 @@ storiesOf("App", module)
   ))
   .add("Single Option", () => (
     <SingleOption onClick={action("Selected")} name="Kenya" />
+  ))
+  .add("Start Button", () => (
+    <StartAgain onClick={action("Start Game")} text="Start Game" />
+  ))
+  .add("Try Again Button", () => (
+    <StartAgain onClick={action("Try Again")} text="Try Again" />
   ));
