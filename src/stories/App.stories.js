@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import Game from "../components/Game";
+import Finished from "../components/Finished";
 import Question from "../components/Question";
 import Options from "../components/Options";
 import SingleOption from "../components/SingleOption";
@@ -20,7 +20,7 @@ const oneQuestion = {
 };
 
 storiesOf("App", module)
-  .add("Game Container", () => <Game />)
+  .add("Finished Container", () => <Finished result="3" />)
   .add("Question", () => (
     <Question onClick={action("Selected")} data={oneQuestion} />
   ))

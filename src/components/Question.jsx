@@ -7,6 +7,7 @@ const Container = styled.div`
   border-radius: 10px;
   background-color: gray;
   width: 40%;
+  margin: 0px auto;
 `;
 
 export default function Question(props) {

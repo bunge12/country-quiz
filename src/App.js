@@ -1,14 +1,25 @@
 import React, { useState } from "react";
 import "./App.css";
-import Game from "./components/Game";
+import Finished from "./components/Finished";
 import Question from "./components/Question";
 import StartAgain from "./components/StartAgain";
 
 function App() {
   const [started, setStarted] = useState(null);
+  const [finished, setFinished] = useState(null);
   const startGame = () => setStarted(true);
+  const restart = () => {
+    setFinished(null);
+    setNumber(0);
+    setScore(0);
+    setStarted(true);
+  };
   const [number, setNumber] = useState(0);
-  const nextQuestion = () => setNumber(number + 1);
+  const nextQuestion = () => {
+    if (number < questions.length - 1) {
+      setNumber(number + 1);
+    } else setFinished(true);
+  };
   const [score, setScore] = useState(0);
   const increaseScore = () => setScore(score + 1);
   const [questions, setQuestions] = useState([
@@ -52,7 +63,10 @@ function App() {
   return (
     <div className="App">
       <h1>country quiz</h1>
-      {started ? (
+
+      {finished ? (
+        <Finished result={score} onClick={restart}></Finished>
+      ) : started ? (
         <Question
           data={questions[number]}
           onClick={increaseScore}
