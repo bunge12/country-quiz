@@ -57,44 +57,6 @@ function App() {
       });
   }, [finished]);
 
-  // const [questions, setQuestions] = useState([
-  //   {
-  //     question: "Port-au-Prince is the capital of",
-  //     options: [
-  //       "Mexico",
-  //       "Haiti",
-  //       "Romania",
-  //       "Saint Helena, Ascension and Tristan da Cunha",
-  //     ],
-  //     winner: "Haiti",
-  //   },
-  //   {
-  //     question: "Vienna is the capital of",
-  //     options: [
-  //       "Trinidad and Tobago",
-  //       "Burundi",
-  //       "Austria",
-  //       "Brunei Darussalam",
-  //     ],
-  //     winner: "Austria",
-  //   },
-  //   {
-  //     question: "Stanley is the capital of",
-  //     options: [
-  //       "Iran (Islamic Republic of)",
-  //       "Palestine, State of",
-  //       "Italy",
-  //       "Falkland Islands (Malvinas)",
-  //     ],
-  //     winner: "Falkland Islands (Malvinas)",
-  //   },
-  //   {
-  //     question: "Yaoundé is the capital of",
-  //     options: ["Åland Islands", "Cameroon", "India", "American Samoa"],
-  //     winner: "Cameroon",
-  //   },
-  // ]);
-
   return (
     <div className="App">
       <h1>country quiz</h1>
@@ -110,6 +72,12 @@ function App() {
       ) : (
         <StartAgain onClick={startGame} text="Start Game"></StartAgain>
       )}
+      <div>
+        Made by{" "}
+        <a href="https://github.com/bunge12" target="_blank">
+          Artur Iatsko
+        </a>
+      </div>
     </div>
   );
 }
