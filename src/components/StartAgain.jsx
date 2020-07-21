@@ -8,6 +8,8 @@ const Button = styled.button`
   border-radius: 1em;
   width: 40%;
   outline: none;
+  margin-top: 3em;
+  margin-bottom: 3em;
 `;
 
 export default function StartAgain(props) {

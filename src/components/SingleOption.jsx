@@ -27,6 +27,7 @@ export default function SingleOption(props) {
   const select = (event) => {
     props.onClick(event.target.value);
     if (event.target.value === props.winner) {
+      console.log("correct");
       setStatus(1);
     } else {
       setStatus(2);

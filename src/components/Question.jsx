@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Options from "./Options";
+import SingleOption from "./SingleOption";
 import Next from "./Next";
 
 const Container = styled.div`
@@ -11,12 +11,18 @@ const Container = styled.div`
 `;
 const Flag = styled.img`
   width: 100px;
+  margin: 0.5em;
   padding: 15px;
+  box-shadow: 1px 1px 15px lightgrey;
+`;
+
+const Caption = styled.figcaption`
+  margin-top: 1em;
 `;
 
 export default function Question(props) {
   const { question, options, winner } = props.data;
-  const [answered, setAnswered] = useState(0);
+  const [answered, setAnswered] = useState(0); // 0 = not answered, 1 = answered correctly, 2 = answered incorrectly
   const checkWinner = (event) => {
     if (event === winner) {
       setAnswered(1);
@@ -25,19 +31,28 @@ export default function Question(props) {
       setAnswered(2);
     }
   };
+  const list = options.map((each) => (
+    <SingleOption
+      onClick={checkWinner}
+      name={each}
+      key={each}
+      winner={winner}
+    ></SingleOption>
+  ));
   return (
     <Container>
       {question.includes("&") ? (
         <>
           <Flag src={question.split("&", 1)}></Flag>
-          <figcaption>{question.split("&")[1]}</figcaption>
+          <Caption>{question.split("&")[1]}</Caption>
         </>
       ) : question.includes("↵") ? (
         question.split("↵", 2)
       ) : (
         question
       )}
-      <Options onClick={checkWinner} data={options} winner={winner}></Options>
+      {list}
+      {/* <Options onClick={checkWinner} data={options} winner={winner}></Options> */}
       {answered ? <Next text="Next" onClick={props.next}></Next> : <></>}
     </Container>
   );

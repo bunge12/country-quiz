@@ -4,6 +4,21 @@ import Finished from "./components/Finished";
 import Question from "./components/Question";
 import StartAgain from "./components/StartAgain";
 import axios from "axios";
+import styled from "styled-components";
+
+const Title = styled.div`
+  width: 50%;
+  margin: 0px auto;
+  text-align: left;
+  margin-bottom: -1em;
+  color: white;
+`;
+
+const Footer = styled.footer`
+  color: white;
+  margin-top: 2em;
+  font-size: x-small;
+`;
 
 function App() {
   const [started, setStarted] = useState(null);
@@ -59,7 +74,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>country quiz</h1>
+      <Title>
+        <h1>COUNTRY QUIZ</h1>
+      </Title>
       <div className="game">
         {finished ? (
           <Finished result={score} onClick={restart}></Finished>
@@ -74,12 +91,12 @@ function App() {
         )}
       </div>
 
-      <div>
+      <Footer>
         Made by{" "}
         <a href="https://github.com/bunge12" target="_blank">
           Artur Iatsko
         </a>
-      </div>
+      </Footer>
     </div>
   );
 }
