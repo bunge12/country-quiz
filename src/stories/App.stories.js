@@ -5,6 +5,7 @@ import { action } from "@storybook/addon-actions";
 import Finished from "../components/Finished";
 import Question from "../components/Question";
 import Options from "../components/Options";
+import CorrectAnswer from "../components/CorrectAnswer";
 import SingleOption from "../components/SingleOption";
 import StartAgain from "../components/StartAgain";
 
@@ -45,6 +46,7 @@ storiesOf("App", module)
   .add("Single Option", () => (
     <SingleOption onClick={action("Selected")} name="Kenya" />
   ))
+  .add("Correct Option", () => <CorrectAnswer name="Kenya" />)
   .add("Start Button", () => (
     <StartAgain onClick={action("Start Game")} text="Start Game" />
   ))

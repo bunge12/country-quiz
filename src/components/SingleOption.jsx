@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import CorrectAnswer from "./CorrectAnswer";
+import WrongAnswer from "./WrongAnswer";
+
 const SingleAnswer = styled.button`
   width: 97%;
   text-align: left;
@@ -9,6 +12,18 @@ const SingleAnswer = styled.button`
   background-color: white;
   border: 1px #7389da solid;
   color: #7389da;
+  border-radius: 10px;
+  display: block;
+`;
+
+const Correct = styled.button`
+  width: 97%;
+  text-align: left;
+  margin: 0.5em;
+  padding: 1em;
+  background-color: #5fc088;
+  color: white;
+  border: 1px #7389da solid;
   border-radius: 10px;
   display: block;
 `;
@@ -24,12 +39,14 @@ export default function SingleOption(props) {
     }
   };
   return (
-    <SingleAnswer
-      onClick={select}
-      value={props.name}
-      className={status === 1 ? "correct" : status === 2 ? "wrong" : ""}
-    >
-      {props.name}
-    </SingleAnswer>
+    <>
+      {status === 2 && <WrongAnswer name={props.name}></WrongAnswer>}
+      {status === 1 && <CorrectAnswer name={props.name}></CorrectAnswer>}
+      {status === 0 && (
+        <SingleAnswer onClick={select} value={props.name}>
+          {props.name}
+        </SingleAnswer>
+      )}
+    </>
   );
 }
