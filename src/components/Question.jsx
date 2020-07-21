@@ -4,10 +4,10 @@ import Options from "./Options";
 import Next from "./Next";
 
 const Container = styled.div`
-  border-radius: 10px;
-  background-color: gray;
-  width: 40%;
-  margin: 0px auto;
+  color: #30527b;
+  background-color: white;
+  font-weight: 500;
+  text-align: left;
 `;
 const Flag = styled.img`
   width: 100px;

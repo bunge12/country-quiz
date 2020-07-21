@@ -60,18 +60,20 @@ function App() {
   return (
     <div className="App">
       <h1>country quiz</h1>
+      <div className="game">
+        {finished ? (
+          <Finished result={score} onClick={restart}></Finished>
+        ) : started ? (
+          <Question
+            data={questions[number]}
+            onClick={increaseScore}
+            next={nextQuestion}
+          ></Question>
+        ) : (
+          <StartAgain onClick={startGame} text="Start Game"></StartAgain>
+        )}
+      </div>
 
-      {finished ? (
-        <Finished result={score} onClick={restart}></Finished>
-      ) : started ? (
-        <Question
-          data={questions[number]}
-          onClick={increaseScore}
-          next={nextQuestion}
-        ></Question>
-      ) : (
-        <StartAgain onClick={startGame} text="Start Game"></StartAgain>
-      )}
       <div>
         Made by{" "}
         <a href="https://github.com/bunge12" target="_blank">

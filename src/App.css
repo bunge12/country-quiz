@@ -20,3 +20,15 @@ html {
   height: 40vmin;
   pointer-events: none;
 }
+
+.game {
+  background-color: white;
+  width: 50%;
+  padding: 1em;
+  margin: 0px auto;
+  border-radius: 1em;
+}
+
+.correct {
+  background-color: green;
+}

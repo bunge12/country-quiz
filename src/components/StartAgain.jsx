@@ -1,8 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 const Button = styled.button`
-  border-radius: 10px;
-  background-color: gray;
+  background: none;
+  color: #1d365c;
+  border-color: #1d365c;
+  padding: 1em;
+  border-radius: 1em;
   width: 40%;
 `;
 
