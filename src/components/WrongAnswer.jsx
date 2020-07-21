@@ -11,6 +11,7 @@ const Wrong = styled.button`
   border: 1px #eb8182 solid;
   border-radius: 10px;
   display: block;
+  outline: none;
 `;
 
 const Icon = styled.span`

@@ -8,9 +8,10 @@ const Correct = styled.button`
   padding: 1em;
   background-color: #5fc088;
   color: white;
-  border: 1px #7389da solid;
+  border: 1px #5fc088 solid;
   border-radius: 10px;
   display: block;
+  outline: none;
 `;
 
 const Icon = styled.span`

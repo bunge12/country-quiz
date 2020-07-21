@@ -14,18 +14,12 @@ const SingleAnswer = styled.button`
   color: #7389da;
   border-radius: 10px;
   display: block;
+  outline: none;
 `;
-
-const Correct = styled.button`
-  width: 97%;
-  text-align: left;
-  margin: 0.5em;
-  padding: 1em;
-  background-color: #5fc088;
-  color: white;
-  border: 1px #7389da solid;
-  border-radius: 10px;
-  display: block;
+const Name = styled.span`
+  float: left;
+  margin-top: 4px;
+  margin-left: 1em;
 `;
 
 export default function SingleOption(props) {

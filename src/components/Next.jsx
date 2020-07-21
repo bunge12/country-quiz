@@ -8,6 +8,7 @@ const Button = styled.button`
   padding: 1em;
   font-weight: 700;
   width: 40%;
+  outline: none;
 `;
 
 export default function Next(props) {

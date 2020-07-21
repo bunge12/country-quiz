@@ -7,6 +7,7 @@ const Button = styled.button`
   padding: 1em;
   border-radius: 1em;
   width: 40%;
+  outline: none;
 `;
 
 export default function StartAgain(props) {

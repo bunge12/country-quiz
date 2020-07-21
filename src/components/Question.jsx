@@ -18,7 +18,7 @@ export default function Question(props) {
   const { question, options, winner } = props.data;
   const [answered, setAnswered] = useState(0);
   const checkWinner = (event) => {
-    if (event == winner) {
+    if (event === winner) {
       setAnswered(1);
       props.onClick();
     } else {
