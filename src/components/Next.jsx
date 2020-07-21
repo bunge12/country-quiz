@@ -9,6 +9,7 @@ const Button = styled.button`
   font-weight: 700;
   width: 40%;
   outline: none;
+  margin-left: 0.5em;
 `;
 
 export default function Next(props) {

@@ -31,6 +31,10 @@ export default function Question(props) {
       setAnswered(2);
     }
   };
+  const nextQuestion = () => {
+    setAnswered(0);
+    props.next();
+  };
   const list = options.map((each) => (
     <SingleOption
       onClick={checkWinner}
@@ -53,7 +57,7 @@ export default function Question(props) {
       )}
       {list}
       {/* <Options onClick={checkWinner} data={options} winner={winner}></Options> */}
-      {answered ? <Next text="Next" onClick={props.next}></Next> : <></>}
+      {answered ? <Next text="Next" onClick={nextQuestion}></Next> : <></>}
     </Container>
   );
 }

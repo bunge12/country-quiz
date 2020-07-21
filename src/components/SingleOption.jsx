@@ -39,7 +39,7 @@ export default function SingleOption(props) {
       {status === 1 && <CorrectAnswer name={props.name}></CorrectAnswer>}
       {status === 0 && (
         <SingleAnswer onClick={select} value={props.name}>
-          {props.name}
+          <Name>{props.name}</Name>
         </SingleAnswer>
       )}
     </>

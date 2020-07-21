@@ -93,7 +93,11 @@ function App() {
 
       <Footer>
         Made by{" "}
-        <a href="https://github.com/bunge12" target="_blank">
+        <a
+          href="https://github.com/bunge12"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Artur Iatsko
         </a>
       </Footer>
