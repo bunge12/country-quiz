@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const SingleAnswer = styled.button`
-  width: 100%;
+  width: 97%;
   text-align: left;
   margin: 0.5em;
   padding: 1em;
@@ -14,15 +14,21 @@ const SingleAnswer = styled.button`
 `;
 
 export default function SingleOption(props) {
-  let status = "";
+  const [status, setStatus] = useState(0); //  0 = not answered; 1 = correct; 2 = incorrect
   const select = (event) => {
     props.onClick(event.target.value);
     if (event.target.value === props.winner) {
-      status = "correct";
+      setStatus(1);
+    } else {
+      setStatus(2);
     }
   };
   return (
-    <SingleAnswer onClick={select} value={props.name} className={status}>
+    <SingleAnswer
+      onClick={select}
+      value={props.name}
+      className={status === 1 ? "correct" : status === 2 ? "wrong" : ""}
+    >
       {props.name}
     </SingleAnswer>
   );
