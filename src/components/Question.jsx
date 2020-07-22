@@ -29,6 +29,8 @@ export default function Question(props) {
       props.onClick();
     } else {
       setAnswered(2);
+      // disable other answers
+      // show correct answer
     }
   };
   const nextQuestion = () => {
@@ -56,7 +58,6 @@ export default function Question(props) {
         question
       )}
       {list}
-      {/* <Options onClick={checkWinner} data={options} winner={winner}></Options> */}
       {answered ? <Next text="Next" onClick={nextQuestion}></Next> : <></>}
     </Container>
   );

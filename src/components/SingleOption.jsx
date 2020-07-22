@@ -25,18 +25,24 @@ const Name = styled.span`
 export default function SingleOption(props) {
   const [status, setStatus] = useState(0); //  0 = not answered; 1 = correct; 2 = incorrect
   const select = (event) => {
-    props.onClick(event.target.value);
-    if (event.target.value === props.winner) {
+    props.onClick(event.target.innerText);
+    console.log(event.target.innerText);
+    if (event.target.innerText === props.winner) {
       console.log("correct");
-      setStatus(1);
+      setStatus((prev) => 1);
     } else {
+      console.log(`${event.target.innerText} does not equal ${props.winner}`);
       setStatus(2);
     }
   };
   return (
     <>
-      {status === 2 && <WrongAnswer name={props.name}></WrongAnswer>}
-      {status === 1 && <CorrectAnswer name={props.name}></CorrectAnswer>}
+      {status === 2 && (
+        <WrongAnswer value={props.name} name={props.name}></WrongAnswer>
+      )}
+      {status === 1 && (
+        <CorrectAnswer value={props.name} name={props.name}></CorrectAnswer>
+      )}
       {status === 0 && (
         <SingleAnswer onClick={select} value={props.name}>
           <Name>{props.name}</Name>

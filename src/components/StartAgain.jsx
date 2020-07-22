@@ -10,6 +10,7 @@ const Button = styled.button`
   outline: none;
   margin-top: 3em;
   margin-bottom: 3em;
+  font-weight: 700;
 `;
 
 export default function StartAgain(props) {
