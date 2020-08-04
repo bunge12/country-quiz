@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import CorrectAnswer from "./CorrectAnswer";
@@ -24,6 +24,13 @@ const Name = styled.span`
 
 export default function SingleOption(props) {
   const [status, setStatus] = useState(0); //  0 = not answered; 1 = correct; 2 = incorrect
+  useEffect(() => {
+    console.log("options updated");
+    setTimeout(() => {
+      setStatus(0);
+    }, 40000);
+  }, [props]);
+
   const select = (event) => {
     props.onClick(event.target.innerText);
     console.log(event.target.innerText);
@@ -37,16 +44,16 @@ export default function SingleOption(props) {
   };
   return (
     <>
-      {status === 2 && (
-        <WrongAnswer value={props.name} name={props.name}></WrongAnswer>
-      )}
-      {status === 1 && (
-        <CorrectAnswer value={props.name} name={props.name}></CorrectAnswer>
-      )}
       {status === 0 && (
         <SingleAnswer onClick={select} value={props.name}>
           <Name>{props.name}</Name>
         </SingleAnswer>
+      )}
+      {status === 1 && (
+        <CorrectAnswer value={props.name} name={props.name}></CorrectAnswer>
+      )}
+      {status === 2 && (
+        <WrongAnswer value={props.name} name={props.name}></WrongAnswer>
       )}
     </>
   );

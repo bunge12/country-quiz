@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SingleOption from "./SingleOption";
 import Next from "./Next";
@@ -23,10 +23,12 @@ const Caption = styled.figcaption`
 export default function Question(props) {
   const { question, options, winner } = props.data;
   const [answered, setAnswered] = useState(0); // 0 = not answered, 1 = answered correctly, 2 = answered incorrectly
+
   const checkWinner = (event) => {
     if (event === winner) {
       setAnswered(1);
       props.onClick();
+      console.log("correct from question");
     } else {
       setAnswered(2);
       // disable other answers
@@ -37,7 +39,7 @@ export default function Question(props) {
     setAnswered(0);
     props.next();
   };
-  const list = options.map((each) => (
+  let list = options.map((each, index) => (
     <SingleOption
       onClick={checkWinner}
       name={each}
@@ -45,6 +47,7 @@ export default function Question(props) {
       winner={winner}
     ></SingleOption>
   ));
+
   return (
     <Container>
       {question.includes("&") ? (
@@ -52,8 +55,6 @@ export default function Question(props) {
           <Flag src={question.split("&", 1)}></Flag>
           <Caption>{question.split("&")[1]}</Caption>
         </>
-      ) : question.includes("↵") ? (
-        question.split("↵", 2)
       ) : (
         question
       )}

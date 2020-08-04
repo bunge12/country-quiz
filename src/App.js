@@ -20,36 +20,36 @@ const Footer = styled.footer`
   font-size: x-small;
 `;
 
-let text = [
-  {
-    question: "Ankara is the capital of",
-    options: ["Botswana", "Turkey", "Germany", "Dominica"],
-    winner: "Turkey",
-  },
-  {
-    question: "Ankara is the capital of",
-    options: ["Turkey", "Germany", "Botswana", "Dominica"],
-    winner: "Turkey",
-  },
-  {
-    question: "Ankara is the capital of",
-    options: ["Botswana", "Dominica", "Germany", "Turkey"],
-    winner: "Turkey",
-  },
-  {
-    question: "Ankara is the capital of",
-    options: ["Turkey", "Germany", "Botswana", "Dominica"],
-    winner: "Turkey",
-  },
-];
+// let text = [
+//   {
+//     question: "Ankara is the capital of",
+//     options: ["Botswana", "Turkey", "Germany", "Dominica"],
+//     winner: "Turkey",
+//   },
+//   {
+//     question: "Ankara is the capital of",
+//     options: ["Turkey", "Germany", "Botswana", "Dominica"],
+//     winner: "Turkey",
+//   },
+//   {
+//     question: "Ankara is the capital of",
+//     options: ["Botswana", "Dominica", "Germany", "Turkey"],
+//     winner: "Turkey",
+//   },
+//   {
+//     question: "Ankara is the capital of",
+//     options: ["Turkey", "Germany", "Botswana", "Dominica"],
+//     winner: "Turkey",
+//   },
+// ];
 
 function App() {
   const [started, setStarted] = useState(null);
   const [finished, setFinished] = useState(null);
   const [number, setNumber] = useState(0);
   const [score, setScore] = useState(0);
-  const [questions, setQuestions] = useState(text);
-  const [currentQuestion, setCurrent] = useState(text[0]);
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrent] = useState([]);
 
   const startGame = () => setStarted(true);
   const restart = () => {
@@ -64,6 +64,10 @@ function App() {
       setCurrent((prev) => questions[number + 1]);
     } else setFinished(true);
   };
+
+  // useEffect(() => {
+  //   setCurrent((prev) => questions[number + 1]);
+  // }, [number]);
 
   const increaseScore = () => setScore(score + 1);
 
@@ -91,15 +95,15 @@ function App() {
     console.log(questions);
     return questions;
   };
-  // useEffect(() => {
-  //   axios
-  //     .get("https://restcountries.eu/rest/v2/all?fields=name;capital;flag")
-  //     .then((data) => {
-  //       const questions = generateQuestions(data.data);
-  //       setQuestions(questions);
-  //       setCurrent(questions[0]);
-  //     });
-  // }, [finished]);
+  useEffect(() => {
+    axios
+      .get("https://restcountries.eu/rest/v2/all?fields=name;capital;flag")
+      .then((data) => {
+        const questions = generateQuestions(data.data);
+        setQuestions(questions);
+        setCurrent(questions[0]);
+      });
+  }, [finished]);
 
   return (
     <div className="App">
@@ -127,8 +131,9 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Artur Iatsko @ devchallenges.io
-        </a>
+          Artur Iatsko
+        </a>{" "}
+        @ devchallenges.io
       </Footer>
     </div>
   );
