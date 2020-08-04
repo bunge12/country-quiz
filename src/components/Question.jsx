@@ -23,14 +23,20 @@ const Caption = styled.figcaption`
 export default function Question(props) {
   const { question, options, winner } = props.data;
   const [answered, setAnswered] = useState(0); // 0 = not answered, 1 = answered correctly, 2 = answered incorrectly
-
+  const [showCorrect, setShowCorrect] = useState(null);
+  useEffect(() => {
+    setAnswered(0);
+  }, [props.key]);
   const checkWinner = (event) => {
+    // console.log(event);
     if (event === winner) {
       setAnswered(1);
       props.onClick();
       console.log("correct from question");
     } else {
       setAnswered(2);
+      console.log(options.indexOf(winner));
+      setShowCorrect(options.indexOf(winner));
       // disable other answers
       // show correct answer
     }
@@ -43,8 +49,10 @@ export default function Question(props) {
     <SingleOption
       onClick={checkWinner}
       name={each}
-      key={each}
+      key={index}
+      answerIndex={index}
       winner={winner}
+      showCorrect={showCorrect}
     ></SingleOption>
   ));
 

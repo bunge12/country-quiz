@@ -24,12 +24,18 @@ const Name = styled.span`
 
 export default function SingleOption(props) {
   const [status, setStatus] = useState(0); //  0 = not answered; 1 = correct; 2 = incorrect
+  // useEffect(() => {
+  //   console.log("options updated");
+  //   setTimeout(() => {
+  //     setStatus(0);
+  //   }, 40000);
+  // }, [props]);
   useEffect(() => {
-    console.log("options updated");
-    setTimeout(() => {
-      setStatus(0);
-    }, 40000);
-  }, [props]);
+    // console.log("ShowCorrect updated", props.showCorrect, props.answerIndex);
+    if (props.showCorrect === props.answerIndex) {
+      setStatus(1);
+    }
+  }, [props.showCorrect]);
 
   const select = (event) => {
     props.onClick(event.target.innerText);
