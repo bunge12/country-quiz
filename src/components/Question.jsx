@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import SingleOption from "./SingleOption";
 import Next from "./Next";
+import adventure from "../img/adventure.svg";
 
 const Container = styled.div`
   color: #30527b;
   background-color: white;
   font-weight: 500;
   text-align: left;
+  min-height: 45vh;
 `;
 const Flag = styled.img`
   width: 100px;
@@ -18,27 +20,34 @@ const Flag = styled.img`
 
 const Caption = styled.figcaption`
   margin-top: 1em;
+  font-weight: bold;
+`;
+
+const Text = styled.p`
+  margin-top: 1em;
+  font-weight: bold;
+`;
+
+const Image = styled.img`
+  width: 30%;
+  display: inline;
+  float: right;
+  margin-top: -5rem;
 `;
 
 export default function Question(props) {
   const { question, options, winner } = props.data;
   const [answered, setAnswered] = useState(0); // 0 = not answered, 1 = answered correctly, 2 = answered incorrectly
   const [showCorrect, setShowCorrect] = useState(null);
-  useEffect(() => {
-    setAnswered(0);
-  }, [props.key]);
+
   const checkWinner = (event) => {
-    // console.log(event);
     if (event === winner) {
       setAnswered(1);
       props.onClick();
-      console.log("correct from question");
     } else {
       setAnswered(2);
-      console.log(options.indexOf(winner));
       setShowCorrect(options.indexOf(winner));
       // disable other answers
-      // show correct answer
     }
   };
   const nextQuestion = () => {
@@ -58,13 +67,14 @@ export default function Question(props) {
 
   return (
     <Container>
+      <Image src={adventure} alt="adventure drawing"></Image>
       {question.includes("&") ? (
         <>
           <Flag src={question.split("&", 1)}></Flag>
           <Caption>{question.split("&")[1]}</Caption>
         </>
       ) : (
-        question
+        <Text>{question}</Text>
       )}
       {list}
       {answered ? <Next text="Next" onClick={nextQuestion}></Next> : <></>}

@@ -5,10 +5,10 @@ import CorrectAnswer from "./CorrectAnswer";
 import WrongAnswer from "./WrongAnswer";
 
 const SingleAnswer = styled.button`
-  width: 97%;
+  width: 92%;
   text-align: left;
-  margin: 0.5em;
-  padding: 1em;
+  margin: 1rem;
+  padding: 1rem;
   background-color: white;
   border: 1px #7389da solid;
   color: #7389da;
@@ -24,18 +24,12 @@ const Name = styled.span`
 
 export default function SingleOption(props) {
   const [status, setStatus] = useState(0); //  0 = not answered; 1 = correct; 2 = incorrect
-  // useEffect(() => {
-  //   console.log("options updated");
-  //   setTimeout(() => {
-  //     setStatus(0);
-  //   }, 40000);
-  // }, [props]);
+
   useEffect(() => {
-    // console.log("ShowCorrect updated", props.showCorrect, props.answerIndex);
     if (props.showCorrect === props.answerIndex) {
       setStatus(1);
     }
-  }, [props.showCorrect]);
+  }, [props.showCorrect, props.answerIndex]);
 
   const select = (event) => {
     props.onClick(event.target.innerText);

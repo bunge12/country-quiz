@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrong = styled.button`
-  width: 97%;
+  width: 92%;
   text-align: left;
-  margin: 0.5em;
-  padding: 1em;
+  margin: 1rem;
+  padding: 1rem;
   background-color: #eb8182;
   color: white;
   border: 1px #eb8182 solid;
@@ -28,7 +28,11 @@ export default function WrongAnswer(props) {
   return (
     <Wrong value={props.name}>
       <Name>{props.name}</Name>
-      <Icon>⛔️</Icon>
+      <Icon>
+        <span role="img" aria-label="no entry">
+          ⛔️
+        </span>
+      </Icon>
     </Wrong>
   );
 }

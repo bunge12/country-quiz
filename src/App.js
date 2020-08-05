@@ -12,6 +12,16 @@ const Title = styled.div`
   text-align: left;
   margin-bottom: -1em;
   color: white;
+  @media only screen and (max-width: 600px) {
+    width: 85%;
+    font-size: small;
+  }
+  @media only screen and (min-width: 768px) {
+    width: 45%;
+  }
+  @media only screen and (min-width: 1200px) {
+    width: 35%;
+  }
 `;
 
 const Footer = styled.footer`
@@ -20,40 +30,13 @@ const Footer = styled.footer`
   font-size: x-small;
 `;
 
-let text = [
-  {
-    id: 1,
-    question: "Ankara is the capital of",
-    options: ["Botswana", "Turkey", "Germany", "Dominica"],
-    winner: "Turkey",
-  },
-  {
-    id: 2,
-    question: "Ankara is the capital of",
-    options: ["Turkey", "Germany", "Botswana", "Dominica"],
-    winner: "Turkey",
-  },
-  {
-    id: 3,
-    question: "Ankara is the capital of",
-    options: ["Botswana", "Dominica", "Germany", "Turkey"],
-    winner: "Turkey",
-  },
-  {
-    id: 4,
-    question: "Ankara is the capital of",
-    options: ["Turkey", "Germany", "Botswana", "Dominica"],
-    winner: "Turkey",
-  },
-];
-
 function App() {
   const [started, setStarted] = useState(null);
   const [finished, setFinished] = useState(null);
   const [number, setNumber] = useState(0);
   const [score, setScore] = useState(0);
-  const [questions, setQuestions] = useState(text);
-  const [currentQuestion, setCurrent] = useState(text[0]);
+  const [questions, setQuestions] = useState([]);
+  const [currentQuestion, setCurrent] = useState([]);
 
   const startGame = () => setStarted(true);
   const restart = () => {
@@ -91,41 +74,42 @@ function App() {
           options.push(element.name);
         });
       }
-      questions.push({ question, options, winner: winner.name });
+      questions.push({ id: i - 1, question, options, winner: winner.name });
     }
     console.log(questions);
     return questions;
   };
-  // useEffect(() => {
-  //   axios
-  //     .get("https://restcountries.eu/rest/v2/all?fields=name;capital;flag")
-  //     .then((data) => {
-  //       const questions = generateQuestions(data.data);
-  //       setQuestions(questions);
-  //       setCurrent(questions[0]);
-  //     });
-  // }, [finished]);
+  useEffect(() => {
+    axios
+      .get("https://restcountries.eu/rest/v2/all?fields=name;capital;flag")
+      .then((data) => {
+        const questions = generateQuestions(data.data);
+        setQuestions(questions);
+        setCurrent(questions[0]);
+      });
+  }, [finished]);
 
   return (
     <div className="App">
-      <Title>
-        <h1>COUNTRY QUIZ</h1>
-      </Title>
-      <div className="game">
-        {finished ? (
-          <Finished result={score} onClick={restart}></Finished>
-        ) : started ? (
-          <Question
-            data={currentQuestion}
-            onClick={increaseScore}
-            next={nextQuestion}
-            key={currentQuestion.id || 0}
-          ></Question>
-        ) : (
-          <StartAgain onClick={startGame} text="Start Game"></StartAgain>
-        )}
+      <div className="container">
+        <Title>
+          <h1>COUNTRY QUIZ</h1>
+        </Title>
+        <div className="game">
+          {finished ? (
+            <Finished result={score} onClick={restart}></Finished>
+          ) : started ? (
+            <Question
+              data={currentQuestion}
+              onClick={increaseScore}
+              next={nextQuestion}
+              key={currentQuestion.id || 0}
+            ></Question>
+          ) : (
+            <StartAgain onClick={startGame} text="Start Game"></StartAgain>
+          )}
+        </div>
       </div>
-
       <Footer>
         Made by{" "}
         <a
