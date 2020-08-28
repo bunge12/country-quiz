@@ -49,7 +49,6 @@ function App() {
     if (number < questions.length - 1) {
       setNumber(number + 1);
       setCurrent((prev) => questions[number + 1]);
-      console.log(currentQuestion);
     } else setFinished(true);
   };
 
@@ -76,7 +75,6 @@ function App() {
       }
       questions.push({ id: i - 1, question, options, winner: winner.name });
     }
-    console.log(questions);
     return questions;
   };
   useEffect(() => {

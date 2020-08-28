@@ -33,12 +33,9 @@ export default function SingleOption(props) {
 
   const select = (event) => {
     props.onClick(event.target.innerText);
-    console.log(event.target.innerText);
     if (event.target.innerText === props.winner) {
-      console.log("correct");
       setStatus((prev) => 1);
     } else {
-      console.log(`${event.target.innerText} does not equal ${props.winner}`);
       setStatus(2);
     }
   };
