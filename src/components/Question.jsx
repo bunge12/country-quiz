@@ -39,15 +39,17 @@ export default function Question(props) {
   const { question, options, winner } = props.data;
   const [answered, setAnswered] = useState(0); // 0 = not answered, 1 = answered correctly, 2 = answered incorrectly
   const [showCorrect, setShowCorrect] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const checkWinner = (event) => {
     if (event === winner) {
       setAnswered(1);
       props.onClick();
+      setDisabled(true);
     } else {
       setAnswered(2);
       setShowCorrect(options.indexOf(winner));
-      // disable other answers
+      setDisabled(true);
     }
   };
   const nextQuestion = () => {
@@ -62,6 +64,7 @@ export default function Question(props) {
       answerIndex={index}
       winner={winner}
       showCorrect={showCorrect}
+      disabled={disabled}
     ></SingleOption>
   ));
 

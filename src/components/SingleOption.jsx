@@ -42,15 +42,27 @@ export default function SingleOption(props) {
   return (
     <>
       {status === 0 && (
-        <SingleAnswer onClick={select} value={props.name}>
+        <SingleAnswer
+          onClick={select}
+          value={props.name}
+          disabled={props.disabled}
+        >
           <Name>{props.name}</Name>
         </SingleAnswer>
       )}
       {status === 1 && (
-        <CorrectAnswer value={props.name} name={props.name}></CorrectAnswer>
+        <CorrectAnswer
+          value={props.name}
+          name={props.name}
+          disabled={props.disabled}
+        ></CorrectAnswer>
       )}
       {status === 2 && (
-        <WrongAnswer value={props.name} name={props.name}></WrongAnswer>
+        <WrongAnswer
+          value={props.name}
+          name={props.name}
+          disabled={props.disabled}
+        ></WrongAnswer>
       )}
     </>
   );
