@@ -14,7 +14,7 @@ This project was created for devchallenges.io.
 
 ## Stack
 
-- Font end: React, Axios, Styled Components
+- Front end: React, Axios, Styled Components
 - Hosted on Firebase
 
 ## Installation
