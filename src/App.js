@@ -57,7 +57,7 @@ function App() {
       setNumber(number + 1);
       setCurrent((prev) => questions[number + 1]);
     } else {
-      setScores([...scores, { score, quantity }]);
+      setScores([{ score, quantity }, ...scores]);
       setFinished(true);
     }
   };

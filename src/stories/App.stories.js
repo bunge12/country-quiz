@@ -76,4 +76,20 @@ storiesOf("App", module)
         { score: 3, quantity: "8" },
       ]}
     />
+  ))
+  .add("Too Full Scoreboard", () => (
+    <Scoreboard
+      data={[
+        { score: 0, quantity: 4 },
+        { score: 3, quantity: "8" },
+        { score: 1, quantity: 4 },
+        { score: 2, quantity: 6 },
+        { score: 1, quantity: 7 },
+        { score: 0, quantity: 8 },
+        { score: 3, quantity: 9 },
+        { score: 1, quantity: 10 },
+        { score: 2, quantity: 11 },
+        { score: 1, quantity: 12 },
+      ]}
+    />
   ));
