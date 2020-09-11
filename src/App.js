@@ -7,6 +7,7 @@ import NumberSelector from "./components/NumberSelector";
 import axios from "axios";
 import styled from "styled-components";
 import usePersistentState from "./hooks/usePersistentState";
+import world from "./img/world.svg";
 
 const Title = styled.div`
   width: 50%;
@@ -30,6 +31,13 @@ const Footer = styled.footer`
   color: white;
   margin-top: 2em;
   font-size: x-small;
+`;
+
+const Welcome = styled.p``;
+
+const Image = styled.img`
+  width: 75%;
+  margin: 2rem;
 `;
 
 function App() {
@@ -124,6 +132,13 @@ function App() {
             ></Question>
           ) : (
             <>
+              <Welcome>
+                <b>Welcome to Country Quiz!</b>
+                <Image src={world} alt="drawing of world map" />
+                Answer 4, 8, or 12 geography-related questions. Test your
+                knowledge of capitals and flags from countries around the world.
+                Good luck!
+              </Welcome>
               <NumberSelector
                 onChange={changeQuantity}
                 id="number"
