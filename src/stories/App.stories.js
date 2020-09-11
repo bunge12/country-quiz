@@ -45,6 +45,9 @@ storiesOf("App", module)
       ]}
     />
   ))
+  .add("Finished Container w/o scores", () => (
+    <Finished result="3" quantity="4" scores={[]} />
+  ))
   .add("Capital Question", () => (
     <Question onClick={action("Selected")} data={oneQuestion} />
   ))

@@ -41,6 +41,7 @@ export default function Finished(props) {
       You got <Score>{props.result}</Score> correct {conjugate} answers out of{" "}
       {props.quantity}
       <br />
+      <Scoreboard data={props.scores}></Scoreboard>
       <StartAgain
         onClick={() => props.onClick(0)}
         text="Try Again"
