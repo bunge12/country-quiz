@@ -8,6 +8,7 @@ import Options from "../components/Options";
 import CorrectAnswer from "../components/CorrectAnswer";
 import SingleOption from "../components/SingleOption";
 import StartAgain from "../components/StartAgain";
+import NumberSelector from "../components/NumberSelector";
 
 const oneQuestion = {
   question: "Port of Spain is the capital of",
@@ -52,4 +53,5 @@ storiesOf("App", module)
   ))
   .add("Try Again Button", () => (
     <StartAgain onClick={action("Try Again")} text="Try Again" />
-  ));
+  ))
+  .add("Selector", () => <NumberSelector onChange={action("Changed")} />);

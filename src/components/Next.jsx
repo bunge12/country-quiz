@@ -10,6 +10,7 @@ const Button = styled.button`
   width: 40%;
   outline: none;
   margin-left: 0.5em;
+  margin-bottom: 0.5rem;
 `;
 
 export default function Next(props) {

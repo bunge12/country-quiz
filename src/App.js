@@ -3,6 +3,7 @@ import "./App.css";
 import Finished from "./components/Finished";
 import Question from "./components/Question";
 import StartAgain from "./components/StartAgain";
+import NumberSelector from "./components/NumberSelector";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -35,15 +36,19 @@ function App() {
   const [finished, setFinished] = useState(null);
   const [number, setNumber] = useState(0);
   const [score, setScore] = useState(0);
+  const [quantity, setQuantity] = useState(4);
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrent] = useState([]);
 
   const startGame = () => setStarted(true);
-  const restart = () => {
-    setFinished(null);
+  const increaseScore = () => setScore(score + 1);
+  const changeQuantity = (data) => setQuantity(data);
+
+  const restart = (data) => {
+    data === 1 ? setStarted(false) : setStarted(true);
     setNumber(0);
     setScore(0);
-    setStarted(true);
+    setFinished(null);
   };
   const nextQuestion = () => {
     if (number < questions.length - 1) {
@@ -52,11 +57,9 @@ function App() {
     } else setFinished(true);
   };
 
-  const increaseScore = () => setScore(score + 1);
-
   const generateQuestions = (response) => {
     let questions = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < quantity; i++) {
       const shuffled = response.sort(() => 0.5 - Math.random()).slice(0, 4);
       const winner = shuffled[Math.floor(Math.random() * shuffled.length)];
       const questionType = Math.random() >= 0.5; // True for Capital and False for Flag
@@ -73,8 +76,9 @@ function App() {
           options.push(element.name);
         });
       }
-      questions.push({ id: i - 1, question, options, winner: winner.name });
+      questions.push({ id: i, question, options, winner: winner.name });
     }
+    console.log(questions);
     return questions;
   };
   useEffect(() => {
@@ -85,7 +89,7 @@ function App() {
         setQuestions(questions);
         setCurrent(questions[0]);
       });
-  }, [finished]);
+  }, [finished, quantity]);
 
   return (
     <div className="App">
@@ -95,16 +99,28 @@ function App() {
         </Title>
         <div className="game">
           {finished ? (
-            <Finished result={score} onClick={restart}></Finished>
+            <Finished
+              result={score}
+              quantity={quantity}
+              onClick={restart}
+            ></Finished>
           ) : started ? (
             <Question
               data={currentQuestion}
               onClick={increaseScore}
               next={nextQuestion}
+              quantity={quantity}
+              number={currentQuestion.id || 0}
               key={currentQuestion.id || 0}
             ></Question>
           ) : (
-            <StartAgain onClick={startGame} text="Start Game"></StartAgain>
+            <>
+              <NumberSelector
+                onChange={changeQuantity}
+                id="number"
+              ></NumberSelector>
+              <StartAgain onClick={startGame} text="Start Game"></StartAgain>
+            </>
           )}
         </div>
       </div>
@@ -116,8 +132,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Artur Iatsko
-        </a>{" "}
-        @ devchallenges.io
+        </a>
       </Footer>
     </div>
   );
