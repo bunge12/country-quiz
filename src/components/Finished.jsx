@@ -48,6 +48,12 @@ export default function Finished(props) {
       ></StartAgain>
       <Restart>
         <Link onClick={() => props.onClick(1)}>Restart game</Link>
+        {props.scores.length > 0 && (
+          <>
+            {" "}
+            | <Link onClick={props.reset}>Reset scores</Link>
+          </>
+        )}
       </Restart>
     </Container>
   );

@@ -45,11 +45,13 @@ function App() {
   const startGame = () => setStarted(true);
   const increaseScore = () => setScore(score + 1);
   const changeQuantity = (data) => setQuantity(data);
+  const resetScore = () => setScores([]);
 
   const restart = (data) => {
     data === 1 ? setStarted(false) : setStarted(true);
     setNumber(0);
     setScore(0);
+    setQuantity(4);
     setFinished(null);
   };
   const nextQuestion = () => {
@@ -109,6 +111,7 @@ function App() {
               quantity={quantity}
               scores={scores}
               onClick={restart}
+              reset={resetScore}
             ></Finished>
           ) : started ? (
             <Question
