@@ -29,7 +29,7 @@ const Title = styled.div`
 
 const Footer = styled.footer`
   color: white;
-  margin-top: 2em;
+  margin-top: 1rem;
   font-size: x-small;
 `;
 
@@ -38,6 +38,9 @@ const Welcome = styled.p``;
 const Image = styled.img`
   width: 75%;
   margin: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 function App() {

@@ -8,8 +8,8 @@ const Button = styled.button`
   border-radius: 1em;
   width: 40%;
   outline: none;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   font-weight: 700;
 `;
 
