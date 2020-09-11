@@ -9,6 +9,7 @@ import CorrectAnswer from "../components/CorrectAnswer";
 import SingleOption from "../components/SingleOption";
 import StartAgain from "../components/StartAgain";
 import NumberSelector from "../components/NumberSelector";
+import Scoreboard from "../components/Scoreboard";
 
 const oneQuestion = {
   question: "Port of Spain is the capital of",
@@ -34,7 +35,16 @@ const flagQuestion = {
 };
 
 storiesOf("App", module)
-  .add("Finished Container", () => <Finished result="3" />)
+  .add("Finished Container", () => (
+    <Finished
+      result="3"
+      quantity="4"
+      scores={[
+        { score: 0, quantity: 4 },
+        { score: 3, quantity: "8" },
+      ]}
+    />
+  ))
   .add("Capital Question", () => (
     <Question onClick={action("Selected")} data={oneQuestion} />
   ))
@@ -54,4 +64,13 @@ storiesOf("App", module)
   .add("Try Again Button", () => (
     <StartAgain onClick={action("Try Again")} text="Try Again" />
   ))
-  .add("Selector", () => <NumberSelector onChange={action("Changed")} />);
+  .add("Selector", () => <NumberSelector onChange={action("Changed")} />)
+  .add("Empty Scoreboard", () => <Scoreboard data={[]} />)
+  .add("Full Scoreboard", () => (
+    <Scoreboard
+      data={[
+        { score: 0, quantity: 4 },
+        { score: 3, quantity: "8" },
+      ]}
+    />
+  ));

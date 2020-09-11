@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import StartAgain from "./StartAgain";
+import Scoreboard from "./Scoreboard";
 import winner from "../img/winner.svg";
 
 const Container = styled.div`

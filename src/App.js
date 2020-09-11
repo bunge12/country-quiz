@@ -6,6 +6,7 @@ import StartAgain from "./components/StartAgain";
 import NumberSelector from "./components/NumberSelector";
 import axios from "axios";
 import styled from "styled-components";
+import usePersistentState from "./hooks/usePersistentState";
 
 const Title = styled.div`
   width: 50%;
@@ -39,6 +40,7 @@ function App() {
   const [quantity, setQuantity] = useState(4);
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrent] = useState([]);
+  const [scores, setScores] = usePersistentState("scores", []);
 
   const startGame = () => setStarted(true);
   const increaseScore = () => setScore(score + 1);
@@ -54,7 +56,10 @@ function App() {
     if (number < questions.length - 1) {
       setNumber(number + 1);
       setCurrent((prev) => questions[number + 1]);
-    } else setFinished(true);
+    } else {
+      setScores([...scores, { score, quantity }]);
+      setFinished(true);
+    }
   };
 
   const generateQuestions = (response) => {
@@ -102,6 +107,7 @@ function App() {
             <Finished
               result={score}
               quantity={quantity}
+              scores={scores}
               onClick={restart}
             ></Finished>
           ) : started ? (
