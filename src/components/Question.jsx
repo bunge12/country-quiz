@@ -28,6 +28,12 @@ const Text = styled.p`
   font-weight: bold;
 `;
 
+const Counter = styled.div`
+  font-weight: lighter;
+  font-size: small;
+  text-align: center;
+`;
+
 const Image = styled.img`
   width: 30%;
   display: inline;
@@ -81,6 +87,9 @@ export default function Question(props) {
       )}
       {list}
       {answered ? <Next text="Next" onClick={nextQuestion}></Next> : <></>}
+      <Counter>
+        Question {props.number + 1} of {props.quantity}
+      </Counter>
     </Container>
   );
 }
