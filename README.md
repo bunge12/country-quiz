@@ -10,6 +10,7 @@ This project was created for devchallenges.io.
 - Connects to https://restcountries.eu with Axios to retrieve country data
 - Randomly selects the type of question (capital vs flag)
 - Shows correct answer if answered wrong
+- Keeps track of your scores, even after a reload
 - Includes drawings from https://undraw.co
 
 ## Stack
