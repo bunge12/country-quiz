@@ -23,8 +23,8 @@ export default function NumberSelector(props) {
   };
   return (
     <div>
-      <Label for="number">Questions:</Label>
-      <Select onChange={selectQuestions}>
+      <Label htmlFor="number">Questions:</Label>
+      <Select id="number" onChange={selectQuestions}>
         <option value="4">4</option>
         <option value="8">8</option>
         <option value="12">12</option>

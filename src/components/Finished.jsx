@@ -19,6 +19,17 @@ const Image = styled.img`
   margin-top: 2rem;
 `;
 
+const Restart = styled.div`
+  color: #1d365c;
+  font-size: small;
+  text-align: center;
+  margin-bottom: 1rem;
+`;
+
+const Link = styled.a`
+  color: #1d365c;
+`;
+
 export default function Finished(props) {
   let conjugate = "";
   props.result === 1 ? (conjugate = "answer") : (conjugate = "answers");
@@ -29,7 +40,13 @@ export default function Finished(props) {
       You got <Score>{props.result}</Score> correct {conjugate} answers out of{" "}
       {props.quantity}
       <br />
-      <StartAgain onClick={props.onClick} text="Try Again"></StartAgain>
+      <StartAgain
+        onClick={() => props.onClick(0)}
+        text="Try Again"
+      ></StartAgain>
+      <Restart>
+        <Link onClick={() => props.onClick(1)}>Restart game</Link>
+      </Restart>
     </Container>
   );
 }

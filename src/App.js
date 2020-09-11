@@ -44,11 +44,11 @@ function App() {
   const increaseScore = () => setScore(score + 1);
   const changeQuantity = (data) => setQuantity(data);
 
-  const restart = () => {
-    setFinished(null);
+  const restart = (data) => {
+    data === 1 ? setStarted(false) : setStarted(true);
     setNumber(0);
     setScore(0);
-    setStarted(true);
+    setFinished(null);
   };
   const nextQuestion = () => {
     if (number < questions.length - 1) {
