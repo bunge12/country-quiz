@@ -56,7 +56,7 @@ function App() {
 
   const generateQuestions = (response) => {
     let questions = [];
-    for (let i = 1; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       const shuffled = response.sort(() => 0.5 - Math.random()).slice(0, 4);
       const winner = shuffled[Math.floor(Math.random() * shuffled.length)];
       const questionType = Math.random() >= 0.5; // True for Capital and False for Flag
