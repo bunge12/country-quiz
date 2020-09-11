@@ -26,7 +26,8 @@ export default function Finished(props) {
     <Container>
       <Image src={winner} alt="winner drawing"></Image>
       <h1>Results</h1>
-      You got <Score>{props.result}</Score> correct {conjugate}
+      You got <Score>{props.result}</Score> correct {conjugate} answers out of{" "}
+      {props.quantity}
       <br />
       <StartAgain onClick={props.onClick} text="Try Again"></StartAgain>
     </Container>

@@ -99,7 +99,11 @@ function App() {
         </Title>
         <div className="game">
           {finished ? (
-            <Finished result={score} onClick={restart}></Finished>
+            <Finished
+              result={score}
+              quantity={quantity}
+              onClick={restart}
+            ></Finished>
           ) : started ? (
             <Question
               data={currentQuestion}
@@ -111,7 +115,10 @@ function App() {
             ></Question>
           ) : (
             <>
-              <NumberSelector onChange={changeQuantity}></NumberSelector>
+              <NumberSelector
+                onChange={changeQuantity}
+                id="number"
+              ></NumberSelector>
               <StartAgain onClick={startGame} text="Start Game"></StartAgain>
             </>
           )}
