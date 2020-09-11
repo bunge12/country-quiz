@@ -15,6 +15,10 @@ const Select = styled.select`
   outline: none;
   margin-top: 1em;
   margin-bottom: 1em;
+  text-align-last: center;
+  text-align: center;
+  -ms-text-align-last: center;
+  -moz-text-align-last: center;
 `;
 
 export default function NumberSelector(props) {
