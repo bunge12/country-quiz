@@ -43,9 +43,22 @@ const Image = styled.img`
   margin-right: auto;
 `;
 
+const Icon = styled.span`
+  position: fixed;
+  right: 27%;
+  top: 12%;
+  @media only screen and (max-width: 600px) {
+    right: 8%;
+  }
+  @media only screen and (min-width: 1200px) {
+    right: 32%;
+  }
+`;
+
 function App() {
   const [started, setStarted] = useState(null);
   const [finished, setFinished] = useState(null);
+  const [sound, setSound] = useState(true);
   const [number, setNumber] = useState(0);
   const [score, setScore] = useState(0);
   const [quantity, setQuantity] = useState(4);
@@ -57,6 +70,7 @@ function App() {
   const increaseScore = () => setScore(score + 1);
   const changeQuantity = (data) => setQuantity(data);
   const resetScore = () => setScores([]);
+  const toggle = () => setSound(!sound);
 
   const restart = (data) => {
     data === 1 ? setStarted(false) : setStarted(true);
@@ -107,6 +121,7 @@ function App() {
         setQuestions(questions);
         setCurrent(questions[0]);
       });
+    // eslint-disable-next-line
   }, [finished, quantity]);
 
   return (
@@ -116,6 +131,11 @@ function App() {
           <h1>COUNTRY QUIZ</h1>
         </Title>
         <div className="game">
+          <Icon>
+            <span role="img" aria-label="sound control" onClick={toggle}>
+              {sound ? "🔈" : "🔇"}
+            </span>
+          </Icon>
           {finished ? (
             <Finished
               result={score}
@@ -132,6 +152,7 @@ function App() {
               quantity={quantity}
               number={currentQuestion.id || 0}
               key={currentQuestion.id || 0}
+              sound={sound}
             ></Question>
           ) : (
             <>

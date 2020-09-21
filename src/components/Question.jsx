@@ -58,12 +58,12 @@ export default function Question(props) {
       setAnswered(1);
       props.onClick();
       setDisabled(true);
-      win();
+      props.sound && win();
     } else {
       setAnswered(2);
       setShowCorrect(options.indexOf(winner));
       setDisabled(true);
-      lose();
+      props.sound && lose();
     }
   };
   const nextQuestion = () => {
