@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import useSound from "use-sound";
+
 import SingleOption from "./SingleOption";
 import Next from "./Next";
 import adventure from "../img/adventure.svg";
+import success from "../sounds/success.mp3";
+import fail from "../sounds/fail.mp3";
 
 const Container = styled.div`
   color: #30527b;
@@ -46,16 +50,20 @@ export default function Question(props) {
   const [answered, setAnswered] = useState(0); // 0 = not answered, 1 = answered correctly, 2 = answered incorrectly
   const [showCorrect, setShowCorrect] = useState(null);
   const [disabled, setDisabled] = useState(false);
+  const [win] = useSound(success, { volume: 0.25 });
+  const [lose] = useSound(fail, { volume: 0.25 });
 
   const checkWinner = (event) => {
     if (event === winner) {
       setAnswered(1);
       props.onClick();
       setDisabled(true);
+      win();
     } else {
       setAnswered(2);
       setShowCorrect(options.indexOf(winner));
       setDisabled(true);
+      lose();
     }
   };
   const nextQuestion = () => {

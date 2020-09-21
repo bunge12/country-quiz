@@ -21,8 +21,8 @@ const Score = styled.span`
 `;
 
 export default function Scoreboard(props) {
-  const list = props.data.slice(0, 5).map((each) => (
-    <Score>
+  const list = props.data.slice(0, 5).map((each, index) => (
+    <Score key={index}>
       {each.score}/{each.quantity}
     </Score>
   ));

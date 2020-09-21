@@ -166,6 +166,3 @@ function App() {
 }
 
 export default App;
-
-// To-do:
-// https://joshwcomeau.com/react/announcing-use-sound-react-hook/
