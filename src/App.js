@@ -60,9 +60,9 @@ function App() {
 
   const restart = (data) => {
     data === 1 ? setStarted(false) : setStarted(true);
+    data === 1 && setQuantity(4);
     setNumber(0);
     setScore(0);
-    setQuantity(4);
     setFinished(null);
   };
   const nextQuestion = () => {
@@ -166,3 +166,6 @@ function App() {
 }
 
 export default App;
+
+// To-do:
+// https://joshwcomeau.com/react/announcing-use-sound-react-hook/
