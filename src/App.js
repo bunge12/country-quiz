@@ -5,6 +5,7 @@ import {
   enable as enableDarkMode,
   disable as disableDarkMode,
 } from "darkreader";
+import ReactGA from "react-ga";
 
 import "./App.css";
 import Finished from "./components/Finished";
@@ -71,6 +72,9 @@ const NightIcon = styled.span`
 `;
 
 function App() {
+  ReactGA.initialize("UA-178688395-1");
+  ReactGA.pageview(window.location.pathname + window.location.search);
+
   const [started, setStarted] = useState(null);
   const [finished, setFinished] = useState(null);
   const [number, setNumber] = useState(0);
