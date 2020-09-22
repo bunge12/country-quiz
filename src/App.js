@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { isMobile } from "react-device-detect";
+
 import "./App.css";
 import Finished from "./components/Finished";
 import Question from "./components/Question";
@@ -131,11 +133,13 @@ function App() {
           <h1>COUNTRY QUIZ</h1>
         </Title>
         <div className="game">
-          <Icon>
-            <span role="img" aria-label="sound control" onClick={toggle}>
-              {sound.on ? "🔈" : "🔇"}
-            </span>
-          </Icon>
+          {!isMobile && (
+            <Icon>
+              <span role="img" aria-label="sound control" onClick={toggle}>
+                {sound.on ? "🔈" : "🔇"}
+              </span>
+            </Icon>
+          )}
           {finished ? (
             <Finished
               result={score}
