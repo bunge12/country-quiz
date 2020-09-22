@@ -25,7 +25,7 @@ const Title = styled.div`
   font-weight: 600;
   @media only screen and (max-width: 600px) {
     width: 85%;
-    font-size: small;
+    font-size: x-large;
   }
   @media only screen and (min-width: 768px) {
     width: 45%;
@@ -215,17 +215,17 @@ function App() {
             </>
           )}
         </div>
+        <Footer>
+          Made by{" "}
+          <a
+            href="https://github.com/bunge12"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Artur Iatsko
+          </a>
+        </Footer>
       </div>
-      <Footer>
-        Made by{" "}
-        <a
-          href="https://github.com/bunge12"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Artur Iatsko
-        </a>
-      </Footer>
     </div>
   );
 }
