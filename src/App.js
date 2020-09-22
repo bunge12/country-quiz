@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Offline } from "react-detect-offline";
 import { isMobile } from "react-device-detect";
 
 import "./App.css";
@@ -36,6 +37,17 @@ const Footer = styled.footer`
 `;
 
 const Welcome = styled.p``;
+
+const Warning = styled.div`
+  olor: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+`;
 
 const Image = styled.img`
   width: 75%;
@@ -86,7 +98,7 @@ function App() {
       setNumber(number + 1);
       setCurrent((prev) => questions[number + 1]);
     } else {
-      setScores([{ score, quantity }, ...scores]);
+      setScores([{ score, quantity }, ...scores.slice(0, 5)]);
       setFinished(true);
     }
   };
@@ -133,6 +145,12 @@ function App() {
           <h1>COUNTRY QUIZ</h1>
         </Title>
         <div className="game">
+          <Offline>
+            <Warning>
+              You seem to be offline. You must be online for the game to work!
+            </Warning>
+          </Offline>
+
           {!isMobile && (
             <Icon>
               <span role="img" aria-label="sound control" onClick={toggle}>
