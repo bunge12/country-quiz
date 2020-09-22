@@ -20,8 +20,9 @@ const Title = styled.div`
   width: 50%;
   margin: 0px auto;
   text-align: left;
-  margin-bottom: -1em;
   color: white;
+  font-size: xx-large;
+  font-weight: 600;
   @media only screen and (max-width: 600px) {
     width: 85%;
     font-size: small;
@@ -159,9 +160,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Title>
-          <h1>COUNTRY QUIZ</h1>
-        </Title>
+        <Title>COUNTRY QUIZ</Title>
         <div className="game">
           <Offline>
             <Warning>
