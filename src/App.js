@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Offline } from "react-detect-offline";
 import { isMobile } from "react-device-detect";
+import {
+  enable as enableDarkMode,
+  disable as disableDarkMode,
+} from "darkreader";
 
 import "./App.css";
 import Finished from "./components/Finished";
@@ -57,7 +61,18 @@ const Image = styled.img`
   margin-right: auto;
 `;
 
-const Icon = styled.span`
+const SoundIcon = styled.span`
+  position: fixed;
+  right: 30%;
+  top: 12%;
+  @media only screen and (max-width: 600px) {
+    right: 13%;
+  }
+  @media only screen and (min-width: 1200px) {
+    right: 35%;
+  }
+`;
+const NightIcon = styled.span`
   position: fixed;
   right: 27%;
   top: 12%;
@@ -79,12 +94,15 @@ function App() {
   const [currentQuestion, setCurrent] = useState([]);
   const [scores, setScores] = usePersistentState("scores", []);
   const [sound, setSound] = usePersistentState("sound", { on: true });
+  const [dark, setDark] = usePersistentState("dark", { on: false });
+  dark.on ? enableDarkMode() : disableDarkMode();
 
   const startGame = () => setStarted(true);
   const increaseScore = () => setScore(score + 1);
   const changeQuantity = (data) => setQuantity(data);
   const resetScore = () => setScores([]);
   const toggle = () => setSound({ on: !sound.on });
+  const darkToggle = () => setDark({ on: !dark.on });
 
   const restart = (data) => {
     data === 1 ? setStarted(false) : setStarted(true);
@@ -150,13 +168,18 @@ function App() {
               You seem to be offline. You must be online for the game to work!
             </Warning>
           </Offline>
+          <NightIcon>
+            <span role="img" aria-label="sound control" onClick={darkToggle}>
+              {dark.on ? "🌞" : "🌒"}
+            </span>
+          </NightIcon>
 
           {!isMobile && (
-            <Icon>
+            <SoundIcon>
               <span role="img" aria-label="sound control" onClick={toggle}>
                 {sound.on ? "🔈" : "🔇"}
               </span>
-            </Icon>
+            </SoundIcon>
           )}
           {finished ? (
             <Finished

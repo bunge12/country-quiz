@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
+    "darkreader": "^4.9.17",
     "react": "^16.13.1",
     "react-detect-offline": "^2.4.0",
     "react-device-detect": "^1.13.1",
