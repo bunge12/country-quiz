@@ -58,19 +58,21 @@ const Icon = styled.span`
 function App() {
   const [started, setStarted] = useState(null);
   const [finished, setFinished] = useState(null);
-  const [sound, setSound] = useState(true);
   const [number, setNumber] = useState(0);
   const [score, setScore] = useState(0);
   const [quantity, setQuantity] = useState(4);
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrent] = useState([]);
   const [scores, setScores] = usePersistentState("scores", []);
+  const [sound, setSound] = usePersistentState("sound", { on: true });
 
   const startGame = () => setStarted(true);
   const increaseScore = () => setScore(score + 1);
   const changeQuantity = (data) => setQuantity(data);
   const resetScore = () => setScores([]);
-  const toggle = () => setSound(!sound);
+  const toggle = () => {
+    setSound({ on: !sound.on });
+  };
 
   const restart = (data) => {
     data === 1 ? setStarted(false) : setStarted(true);
@@ -133,7 +135,7 @@ function App() {
         <div className="game">
           <Icon>
             <span role="img" aria-label="sound control" onClick={toggle}>
-              {sound ? "🔈" : "🔇"}
+              {sound.on ? "🔈" : "🔇"}
             </span>
           </Icon>
           {finished ? (
@@ -152,7 +154,7 @@ function App() {
               quantity={quantity}
               number={currentQuestion.id || 0}
               key={currentQuestion.id || 0}
-              sound={sound}
+              sound={sound.on}
             ></Question>
           ) : (
             <>

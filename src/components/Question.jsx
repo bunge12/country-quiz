@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import useSound from "use-sound";
+import useKeyPress from "../hooks/useKeyPress";
 
 import SingleOption from "./SingleOption";
 import Next from "./Next";
@@ -70,6 +71,10 @@ export default function Question(props) {
     setAnswered(0);
     props.next();
   };
+  // useKeyPress("Enter", () => {
+  //   nextQuestion();
+  // });
+
   let list = options.map((each, index) => (
     <SingleOption
       onClick={checkWinner}
