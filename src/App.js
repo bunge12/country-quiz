@@ -70,9 +70,7 @@ function App() {
   const increaseScore = () => setScore(score + 1);
   const changeQuantity = (data) => setQuantity(data);
   const resetScore = () => setScores([]);
-  const toggle = () => {
-    setSound({ on: !sound.on });
-  };
+  const toggle = () => setSound({ on: !sound.on });
 
   const restart = (data) => {
     data === 1 ? setStarted(false) : setStarted(true);

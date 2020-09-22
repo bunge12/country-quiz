@@ -71,9 +71,9 @@ export default function Question(props) {
     setAnswered(0);
     props.next();
   };
-  // useKeyPress("Enter", () => {
-  //   nextQuestion();
-  // });
+  useKeyPress("Enter", () => {
+    nextQuestion();
+  });
 
   let list = options.map((each, index) => (
     <SingleOption
