@@ -63,26 +63,11 @@ const Image = styled.img`
 `;
 
 const SoundIcon = styled.span`
-  position: fixed;
-  right: 30%;
-  top: 12%;
-  @media only screen and (max-width: 600px) {
-    right: 13%;
-  }
-  @media only screen and (min-width: 1200px) {
-    right: 35%;
-  }
+  float: right;
+  margin-right: 0.5rem;
 `;
 const NightIcon = styled.span`
-  position: fixed;
-  right: 27%;
-  top: 12%;
-  @media only screen and (max-width: 600px) {
-    right: 8%;
-  }
-  @media only screen and (min-width: 1200px) {
-    right: 32%;
-  }
+  float: right;
 `;
 
 function App() {
