@@ -11,7 +11,7 @@ This project was created for devchallenges.io.
 - Randomly selects the type of question (capital or flag)
 - Shows correct answer if answered wrong, provides audio feedback
 - Keeps track of your scores, even after a reload
-- Dark moode available
+- Dark mode available
 - Includes drawings from https://undraw.co
 
 ## Stack
