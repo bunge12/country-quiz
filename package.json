@@ -4,14 +4,14 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
-    "darkreader": "^4.9.17",
-    "react": "^16.13.1",
-    "react-detect-offline": "^2.4.0",
-    "react-device-detect": "^1.13.1",
-    "react-dom": "^16.13.1",
-    "react-ga": "^3.1.2",
+    "darkreader": "^4.9.52",
+    "react": "^16.14.0",
+    "react-detect-offline": "^2.4.5",
+    "react-device-detect": "^1.17.0",
+    "react-dom": "^16.14.0",
+    "react-ga": "^3.3.1",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.1.1",
+    "styled-components": "^5.3.5",
     "use-sound": "^1.0.2"
   },
   "scripts": {
@@ -40,8 +40,8 @@
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/addons": "^5.3.22",
+    "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^5.3.19"
   }
 }
